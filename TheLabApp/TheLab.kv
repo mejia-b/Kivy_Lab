@@ -1,4 +1,27 @@
-AnchorLayoutExample:
+GridLayoutExample:
+
+
+<GridLayoutExample@GridLayout>:
+    # For GridLayout we must specifiy the following: 
+    # # of rows or # of columns
+    #cols: 3
+    rows: 2
+
+    Button:
+        text: "A"
+        size_hint: None, 1 # width will take up 50 percent, height will take up 100 percent
+        width: "60dp" # setting the width from here sets a fixed width
+    BoxLayoutExample:
+    Button:
+        text: "C"
+    Button:
+        text: "D"
+        size_hint: None, 1
+        width: "60dp"
+    Button:
+        text: "E"
+    Button:
+        text: "F"
 
 
 <AnchorLayoutExample>:
@@ -20,6 +43,8 @@ AnchorLayoutExample:
     orientation: "horizontal"
     Button:
         text: "A"
+        # In order to change a button's size within a box layout we must use size_hint instead of 
+        # size as used in a widget
         size_hint: .5, None # width, height
         #size: "100dp", "60dp"
         #width: "100dp"
@@ -29,7 +54,7 @@ AnchorLayoutExample:
         pos_hint : {"center_y":.5}
     BoxLayout:
         orientation: "vertical"
-        spacing: "10dp  "
+        spacing: "10dp"
         Button:
             text: "B1"
         Button:
