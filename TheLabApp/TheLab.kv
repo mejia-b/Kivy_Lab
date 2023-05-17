@@ -1,4 +1,20 @@
-BoxLayoutExample:
+AnchorLayoutExample:
+
+
+<AnchorLayoutExample>:
+    # The properties that anchor_x can get are the following:
+    # "right", "left", "center"
+    anchor_x: "center"
+    # The properties that anchor_y can get are the following:
+    # "bottom", "top", "center"
+    anchor_y: "top"
+    BoxLayout:
+        size_hint: .2,.2
+        Button: 
+            text: "A"    
+        Button: 
+            text: "B"
+            
 
 <BoxLayoutExample>:
     orientation: "horizontal"
@@ -13,7 +29,7 @@ BoxLayoutExample:
         pos_hint : {"center_y":.5}
     BoxLayout:
         orientation: "vertical"
-        spacing: "10dp"
+        spacing: "10dp  "
         Button:
             text: "B1"
         Button:
