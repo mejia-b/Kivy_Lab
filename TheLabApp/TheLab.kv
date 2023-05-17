@@ -11,9 +11,18 @@ BoxLayoutExample:
         # x, center_x, right -> use only one of these options when using pos_hint 
         # y, center_y, top -> for both x and y values range from 0 to 1
         pos_hint : {"center_y":.5}
-    Button:
-        text: "B"
-        size_hint: 1,2
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+        Button:
+            text: "B1"
+        Button:
+            text: "B2"
+        Button:
+            text: "B3"
+        Button:
+            text: "B4"
+
     Label:
         text: "C"
 
