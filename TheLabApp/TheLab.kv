@@ -1,4 +1,12 @@
-StackLayoutExample:
+ScrollViewExample:
+
+
+<ScrollViewExample@ScrollView>:
+    StackLayoutExample:
+        size_hint: 1,None
+        # this value of self.minimum_height gets computed automatically from StackLayoutExample
+        height: self.minimum_height 
+
 
 # stack layout will stack items on multiple lines
 # each item must get a size
