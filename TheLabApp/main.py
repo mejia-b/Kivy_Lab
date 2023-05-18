@@ -1,4 +1,5 @@
 from kivy.app import App
+from kivy.properties import StringProperty
 from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.anchorlayout import AnchorLayout
@@ -6,6 +7,19 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.button import Button
 from kivy.metrics import dp
+
+
+class WidgetsExample(GridLayout):
+    # defines a variable of type string with a default value of "Hello"
+    my_text = StringProperty("Hello")
+    count = 0
+    def on_button_click(self):
+        self.count += 1
+        print("You have clicked the button! :)")
+        if self.count == 1:
+            self.my_text = f"You have clicked the button {self.count} time"
+        else:
+           self.my_text = f"You have clicked the button {self.count} times" 
 
 class StackLayoutExample(StackLayout):
     def __init__(self, **kwargs):
