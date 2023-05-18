@@ -1,5 +1,16 @@
-GridLayoutExample:
+StackLayoutExample:
 
+# stack layout will stack items on multiple lines
+# each item must get a size
+<StackLayoutExample>:
+    # options: left-right top-bottom , default: "lr-tb"
+    # orientation: "rl-bt"
+    # padding values are in a clockwise rotation starting from the left
+    # left, top, right, bottom
+    # padding: ("20dp","20dp","20dp","300dp") 
+    # spacing is given horizontaly and vertically -> <horizontal_value>, <vertical_value>
+    # spacing: "20dp", "20dp"
+    
 
 <GridLayoutExample@GridLayout>:
     # For GridLayout we must specifiy the following: 
@@ -38,7 +49,7 @@ GridLayoutExample:
         Button: 
             text: "B"
             
-
+# Box Layout fits everything in one line and can be defined as either going horizontal or vertical
 <BoxLayoutExample>:
     orientation: "horizontal"
     Button:
@@ -66,7 +77,6 @@ GridLayoutExample:
 
     Label:
         text: "C"
-
 
 
 <MainWidget>:
