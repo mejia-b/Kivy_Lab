@@ -24,6 +24,21 @@ WidgetsExample:
         on_active: root.on_switch_active(self)
         size_hint: None, 1
         width: "100dp"
+    Slider:
+        # for id attribute any name can be given
+        id: slider
+        min: 0
+        max: 100
+        step: 1
+        value: 50
+        orientation: "vertical"
+        # allows the value of the slider to be sent to the function specified below
+        on_value: root.on_slider_value(self)
+    Label:
+        # default data type value of the slider's value is float type
+        # to change it to int we first convert the slider value to int
+        # and then to string in order to display it on the Label
+        text: str(int(slider.value))
 
 
 <PageLayoutExample@PageLayout>:
