@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, BooleanProperty
 from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.anchorlayout import AnchorLayout
@@ -11,15 +11,23 @@ from kivy.metrics import dp
 
 class WidgetsExample(GridLayout):
     # defines a variable of type string with a default value of "Hello"
-    my_text = StringProperty("Hello")
-    count = 0
+    my_text = StringProperty("1")
+    count_enabled = BooleanProperty(False)
+    count = 1
     def on_button_click(self):
-        self.count += 1
-        print("You have clicked the button! :)")
-        if self.count == 1:
-            self.my_text = f"You have clicked the button {self.count} time"
+        # only when the button is set to on will the label text be incremented
+        if self.count_enabled:
+            self.count += 1
+            self.my_text = str(self.count)
+       
+    def on_toggle_button_state(self,widget):
+        print(f"toggle state: {widget.state}")
+        if widget.state == 'normal':
+            widget.text = "OFF"
+            self.count_enabled = False
         else:
-           self.my_text = f"You have clicked the button {self.count} times" 
+            widget.text = "ON"
+            self.count_enabled = True
 
 class StackLayoutExample(StackLayout):
     def __init__(self, **kwargs):

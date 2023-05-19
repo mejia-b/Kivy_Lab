@@ -2,9 +2,16 @@ WidgetsExample:
 
 <WidgetsExample@GridLayout>:
     cols: 3
+    ToggleButton:
+        text: "OFF"
+        # To control the state of the button we can point it to a function
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: "100dp"
     Button:
-        text: "Click here"
+        text: "Count"
         on_press: root.on_button_click()
+        disabled: not root.count_enabled
     Label:
         text: root.my_text
         # For the font we download a font which is stored in the fonts directory within this project folder
