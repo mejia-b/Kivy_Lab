@@ -37,11 +37,19 @@ WidgetsExample:
         disabled: not switch.active
         # allows the value of the slider to be sent to the function specified below
         on_value: root.on_slider_value(self)
-    Label:
-        # default data type value of the slider's value is float type
-        # to change it to int we first convert the slider value to int
-        # and then to string in order to display it on the Label
-        text: str(int(slider.value))
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            # default data type value of the slider's value is float type
+            # to change it to int we first convert the slider value to int
+            # and then to string in order to display it on the Label
+            text: str(int(slider.value))
+        ProgressBar:
+            # minimum value for a progress bar is always zero and this can't be customized
+            # max value on the other hand can be customized
+            max: 100
+            # This will be the start of the progress bar
+            value: slider.value
 
 
 <PageLayoutExample@PageLayout>:
