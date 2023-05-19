@@ -28,6 +28,7 @@ class WidgetsExample(GridLayout):
         else:
             widget.text = "ON"
             self.count_enabled = True
+    
     def on_switch_active(self,widget):
         print(f"Switch: {widget.active}")
 

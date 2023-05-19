@@ -21,9 +21,11 @@ WidgetsExample:
         # Red,Green,Blue,Alpha
         color: 1, .5, 1, 1
     Switch:
+        id: switch
         on_active: root.on_switch_active(self)
         size_hint: None, 1
         width: "100dp"
+        active: True
     Slider:
         # for id attribute any name can be given
         id: slider
@@ -31,7 +33,8 @@ WidgetsExample:
         max: 100
         step: 1
         value: 50
-        orientation: "vertical"
+        orientation: "horizontal"
+        disabled: not switch.active
         # allows the value of the slider to be sent to the function specified below
         on_value: root.on_slider_value(self)
     Label:
