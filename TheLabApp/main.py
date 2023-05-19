@@ -13,6 +13,7 @@ class WidgetsExample(GridLayout):
     # defines a variable of type string with a default value of "Hello"
     my_text = StringProperty("1")
     count_enabled = BooleanProperty(False)
+    text_input_str = StringProperty("Kivy Tutorial")
     count = 1
     def on_button_click(self):
         # only when the button is set to on will the label text be incremented
@@ -34,6 +35,11 @@ class WidgetsExample(GridLayout):
 
     def on_slider_value(self,widget):
         print(f"Slider value: {int(widget.value)}")
+    # This method executes when the textbox is set to be a single line
+    # then the logic behind this is that when text is entered on to the TextInput widget
+    # it will only update the labels text to the same text entered on the TextInput once 'enter' is pressed
+    def on_text_validate(self,widget):
+        self.text_input_str = widget.text
 
 class StackLayoutExample(StackLayout):
     def __init__(self, **kwargs):

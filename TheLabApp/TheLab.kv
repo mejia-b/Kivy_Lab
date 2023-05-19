@@ -51,6 +51,17 @@ WidgetsExample:
             # This will be the start of the progress bar
             value: slider.value
 
+    TextInput:
+        id: text_input
+        size_hint: None, 1
+        width: "100dp"
+        text: "Kivy Tutorial"
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: "Your name is: " + root.text_input_str
+
+
 
 <PageLayoutExample@PageLayout>:
     MainWidget:
