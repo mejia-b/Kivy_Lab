@@ -116,6 +116,8 @@ class CanvasExample5(Widget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.ball_size = dp(50)
+        self.vx = dp(3)
+        self.vy = dp(4)
         with self.canvas:
             Color(.5,.2,.6)
             self.ball = Ellipse(pos=(100,100), size=(self.ball_size,self.ball_size))
@@ -132,6 +134,29 @@ class CanvasExample5(Widget):
     def update(self,dt):
         # print("Update")
         x,y = self.ball.pos
-        self.ball.pos = (x+5,y)
+        x += self.vx
+        y += self.vy
+
+        # Here the first rebound will happen at the top of the screen
+        # so we must keep the ball below the height of the screen by setting the 
+        # y position which is the lower left point of the circle back below the height of the screen
+        if y + self.ball_size > self.height:
+            y = self.height - self.ball_size
+            self.vy = -self.vy
+        # For this condition the ball will rebound against the right side of the screen
+        # therefoere the x position needs to be updated so that the ball remains in the screen 
+        # and does not pass the right side
+        if x + self.ball_size > self.width:
+            x = self.width - self.ball_size
+            self.vx = -self.vx
+        # The following two conditions check for lower part of the screen and, left side of screen
+        if y < 0:
+            y = 0
+            self.vy = -self.vy
+        if x < 0:
+            x = 0
+            self.vx = -self.vx    
+
+        self.ball.pos = (x,y)
             
 TheLabApp().run()
