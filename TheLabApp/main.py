@@ -96,6 +96,20 @@ class CanvasExample4(Widget):
             Color(0,1,0)
             Line(circle=(400,200,80))
             Line(rectangle=(500,300,80,100), width=2)
-            Rectangle(pos=(700,200), size=(150,100))
+            self.rect = Rectangle(pos=(700,200), size=(150,100))
+    def on_button_a_click(self):
+        # unpacked the x and y coordinates of rectangle
+        x,y = self.rect.pos
+        # unpacked the widht and height of the rectangle
+        w,h = self.rect.size
+        # inc variable will allow the rectangle to move 10 units to the right
+        inc = dp(10)
+        diff = self.width - (x+w)
+        if diff < inc:
+            inc = diff
+        
+        x += inc
+        self.rect.pos = (x,y)
+
 
 TheLabApp().run()
