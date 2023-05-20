@@ -10,6 +10,12 @@ CanvasExample1:
         Ellipse:
             pos: 200, 500
             size: s, s/2
+        Line:
+            # points takes two coordinate points -> (x1,y1,x2,y2)
+            # creates a triangle spring that adapts to the screen
+            points: (0,0,self.width/4,100,self.width/2,0,self.width*3/4,100,self.width,0)
+            width: 3
+
 
 <ImagesExample@GridLayout>:
     cols: 3
