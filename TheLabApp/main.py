@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.properties import StringProperty, BooleanProperty
+from kivy.properties import StringProperty, BooleanProperty, Clock
 from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.anchorlayout import AnchorLayout
@@ -7,9 +7,10 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.button import Button
 from kivy.metrics import dp
-from kivy.graphics import Rectangle
+from kivy.graphics import Rectangle, Ellipse
 from kivy.graphics.vertex_instructions import Line
 from kivy.graphics.context_instructions import Color
+
 
 # class WidgetsExample(GridLayout):
 #     # defines a variable of type string with a default value of "Hello"
@@ -111,5 +112,26 @@ class CanvasExample4(Widget):
         x += inc
         self.rect.pos = (x,y)
 
-
+class CanvasExample5(Widget):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.ball_size = dp(50)
+        with self.canvas:
+            Color(.5,.2,.6)
+            self.ball = Ellipse(pos=(100,100), size=(self.ball_size,self.ball_size))
+        # This schedule_interval function takes a function(st parameter) and amount of time in seconds(2nd parameter)
+        # Every n seconds the function passed as the first arguments will be called
+        Clock.schedule_interval(self.update,1/60)
+    # this funtion gets called once the window is running
+    def on_size(self,*args):
+        # print(f"on size: {self.width}, {self.height}")
+        self.ball.pos = (self.center_x-self.ball_size/2, self.center_y-self.ball_size/2)
+    # every function call that got called from the Clock.schedule_interval function needs to have a parameter
+    # dt -> delta time
+    # The point of this update function is to be able to update the position of the ball every n seconds
+    def update(self,dt):
+        # print("Update")
+        x,y = self.ball.pos
+        self.ball.pos = (x+5,y)
+            
 TheLabApp().run()
