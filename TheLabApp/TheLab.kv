@@ -1,7 +1,77 @@
-CanvasExample5:
+CanvasExample7:
 
 # creating a variable
 #: set s dp(150)
+
+<CanvasExample7>:
+    RelativeLayout:
+        canvas:
+            Color:
+                rgb: 0,0,1
+            Rectangle:
+                size: self.size
+    RelativeLayout:
+        canvas:
+            Color:
+                rgb: 1,1,1
+            Rectangle:
+                size: self.size
+    RelativeLayout:
+        canvas:
+            Color:
+                rgb: 1,0,0
+            Rectangle:
+                size: self.size
+    
+                
+    
+            
+
+<CanvasExample6>:
+    # RelativeLayout:
+        # adding .before to canvas allows the canvas to be placed first "before" the button gets placed
+        # Then the button gets drawn on top of the canvas
+        # canvas.before:
+            #Rectangle:
+        # canvas: 
+        #     Rectangle:
+        # text: "A"
+        # pos: 100,100
+
+    BoxLayout:
+        # adding the size attribute is needed if we want BoxLayout to take full width and height
+        # of the screen
+        # This is only needed because in this example the CanvasExample6 is inheriting from WidgetsExample
+
+        size: root.size
+        Widget:
+            canvas:
+                Color: 
+                    rgb: 0,1,0
+                Rectangle:
+                    size: self.size
+        # Widget:
+        #    canvas:
+        #        Color: 
+        #            rgb: 0.3,0,0.5
+        #        Rectangle:
+        #            size: self.size
+                    # A canvas will always start at coordintate point (0,0) so because I have a 
+                    # widget above drawing a rectangle, the rectangle will be to the left side
+                    # when this second widget is added, what happens is that it is drawn right above the first widget
+                    # again because canvas is drawn at postion (0,0), in order to display this second Rectangle right next 
+                    # to the first one we need to set it's position attribute to the positon of the Widget -> self.pos
+        #            pos: self.pos
+
+        # Instead of using a Widget where we would have to specify the pos, alternetively we can use RelativeLayout
+        RelativeLayout:
+            canvas:
+                Color:
+                    rgb: 0.3,0,0.5
+                Rectangle:
+                    size: self.size
+            
+
 <CanvasExample4>:
     Button:
         pos: 100,400
@@ -28,8 +98,6 @@ CanvasExample5:
             rectangle: (800,100,300,200) # x,y,w,h
             width: 2
 
-
-
 <CanvasExample2>:
     canvas:
         # Horizontal line
@@ -54,7 +122,6 @@ CanvasExample5:
             # creates a triangle spring that adapts to the screen
             points: (0,0,self.width/4,100,self.width/2,0,self.width*3/4,100,self.width,0)
             width: 3
-
 
 <ImagesExample@GridLayout>:
     cols: 3
