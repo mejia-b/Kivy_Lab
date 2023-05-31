@@ -10,8 +10,8 @@ class MainWidget(Widget):
     perspective_point_x = NumericProperty(0)
     perspective_point_y = NumericProperty(0)
     
-    V_NUM_LINES = 7
-    V_LINES_SPACING = .1 # percentage of width size
+    V_NUM_LINES = 10
+    V_LINES_SPACING = .2 # percentage of width size
     vertical_lines = []
 
     def __init__(self, **kwargs):
@@ -50,7 +50,7 @@ class MainWidget(Widget):
         # x value will be middle of the screen 
         central_line_x = int(self.width/2)
         spacing = self.V_LINES_SPACING * self.width
-        offset = -int(self.V_NUM_LINES/2)
+        offset = -int(self.V_NUM_LINES/2)+0.5
         # print(f"Screen width: {self.width}, Screen height: {self.height}")
         # print(f"central_line: {central_line_x}")
         # print(f"spacing: {spacing}")
